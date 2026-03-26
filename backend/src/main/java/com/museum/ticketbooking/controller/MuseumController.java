@@ -128,6 +128,19 @@ public class MuseumController {
         }
     }
     
+    @PostMapping("/{id}/regenerate-pin")
+    public ResponseEntity<ApiResponse<Map<String, Object>>> regenerateStaffPin(@PathVariable Long id) {
+        try {
+            String newPin = museumService.regenerateStaffPin(id);
+            Map<String, Object> data = new HashMap<>();
+            data.put("staffPin", newPin);
+            return ResponseEntity.ok(ApiResponse.success("Staff PIN regenerated successfully", data));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest()
+                    .body(ApiResponse.error(e.getMessage()));
+        }
+    }
+    
     @GetMapping("/{id}/stats")
     public ResponseEntity<ApiResponse<Map<String, Object>>> getMuseumStats(@PathVariable Long id) {
         try {

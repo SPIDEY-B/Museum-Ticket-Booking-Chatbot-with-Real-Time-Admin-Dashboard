@@ -52,6 +52,7 @@ export const museumAPI = {
   update:              (id, data)     => api.put(`/museums/${id}`, data),
   updateBookingStatus: (id, status)   => api.patch(`/museums/${id}/booking-status?status=${status}`),
   regenerateQR:        (id)           => api.post(`/museums/${id}/regenerate-qr`),
+  regeneratePin:       (id)           => api.post(`/museums/${id}/regenerate-pin`),
   getStats:            (id)           => api.get(`/museums/${id}/stats`),
 };
 

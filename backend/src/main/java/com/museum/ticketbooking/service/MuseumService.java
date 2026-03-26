@@ -131,6 +131,16 @@ public class MuseumService {
         return path;
     }
 
+    /* ── REGENERATE STAFF PIN ── */
+    @Transactional
+    public String regenerateStaffPin(Long id) {
+        Museum museum = getMuseumById(id);
+        String newPin = generateRandomStaffPin();
+        museum.setStaffPin(newPin);
+        museumRepository.save(museum);
+        return newPin;
+    }
+
     /* ── STATISTICS ── */
     public Map<String, Object> getMuseumStatistics(Long id) {
         Museum museum = getMuseumById(id);
