@@ -1,0 +1,11 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "maven-compile-fast",
+			"type": "shell",
+			"command": "mvn clean compile -DskipTests",
+			"isBackground": false
+		}
+	]
+}
